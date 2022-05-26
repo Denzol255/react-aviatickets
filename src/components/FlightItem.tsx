@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { formatCurrency } from "../functions/formatCurrency";
 import { IFlight } from "../models/IFlight";
-import { ILeg } from "../models/ILeg";
 import LegItem from "./LegItem";
 
 interface FlightItemProps {
@@ -11,7 +10,7 @@ interface FlightItemProps {
 const FlightItem: FC<FlightItemProps> = ({ flight }) => {
   const carrier =
     flight.flight.carrier.uid + " " + flight.flight.carrier.caption;
-  const price = Number(flight.flight.price.total.amount);
+  const price = +flight.flight.price.total.amount;
   const legs = flight.flight.legs;
 
   return (

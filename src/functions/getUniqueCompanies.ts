@@ -7,7 +7,6 @@ export const getUniqueCompanies = (bestPrices: IBestPrices): IBestFlight[] => {
     ...bestPrices.ONE_CONNECTION.bestFlights,
     ...bestPrices.DIRECT.bestFlights,
   ].sort((a, b) => +b.price.amount - +a.price.amount);
-  console.log(allCompanies);
 
   // Получаем уникальные компании с наименьшей ценой за билет
   const unioueCompanies = Array.from(

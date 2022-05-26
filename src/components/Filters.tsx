@@ -1,14 +1,84 @@
 import React from "react";
 import { formatCurrency } from "../functions/formatCurrency";
 import { getUniqueCompanies } from "../functions/getUniqueCompanies";
-import { useAppSelector } from "../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { IFlight } from "../models/IFlight";
+import {
+  changeSortingType,
+  changeTransferFiltersList,
+} from "../store/reducers/FilterSlice";
+import { sortFlights } from "../store/reducers/FlightSlice";
 
 const Filters = () => {
-  const { bestPrices } = useAppSelector((state) => state.flightReducer);
-
-  console.log(bestPrices);
-
+  const { bestPrices, flights } = useAppSelector(
+    (state) => state.flightReducer
+  );
+  const { transferFiltersList } = useAppSelector(
+    (state) => state.filterReducer
+  );
+  const dispatch = useAppDispatch();
   const uniqueCompanies = getUniqueCompanies(bestPrices);
+  const sortingValues = {
+    increasePrice: {
+      value: "increasePrice",
+      name: "по возрастанию цены",
+    },
+    decreasePrice: {
+      value: "decreasePrice",
+      name: "по убыванию цены",
+    },
+    travelTime: {
+      value: "travelTime",
+      name: "по времение в пути",
+    },
+  };
+
+  const getNewSortedList = (value: string): IFlight[] => {
+    if (value === "increasePrice") {
+      return [...flights].sort(
+        (a, b) => +a.flight.price.total.amount - +b.flight.price.total.amount
+      );
+    } else if (value === "decreasePrice") {
+      return [...flights].sort(
+        (a, b) => +b.flight.price.total.amount - +a.flight.price.total.amount
+      );
+    } else if (value === "travelTime") {
+      return [...flights].sort((a, b) => {
+        return (
+          a.flight.legs.reduce((acc, cur) => acc + +cur.duration, 0) -
+          b.flight.legs.reduce((acc, cur) => acc + +cur.duration, 0)
+        );
+      });
+    } else {
+      return [...flights];
+    }
+  };
+
+  const handleSortFlights = (value: string): void => {
+    const newFlightList = getNewSortedList(value);
+    dispatch(changeSortingType(value));
+    dispatch(sortFlights(newFlightList));
+  };
+
+  const filterTransferValues = {
+    direct: {
+      value: "direct",
+      name: "без пересадок",
+    },
+    oneConnection: {
+      value: "oneConnection",
+      name: "1 пересадка",
+    },
+  };
+
+  const handleTransferFilter = (position: number): void => {
+    const newTransferFiltersList = transferFiltersList.map((filter, index) =>
+      index === position ? !filter : filter
+    );
+    dispatch(changeTransferFiltersList(newTransferFiltersList));
+    console.log(newTransferFiltersList);
+    // Сделать функцию для фильтрации в зависимости от количества трансферов
+  };
 
   return (
     <div className='filters'>
@@ -19,17 +89,35 @@ const Filters = () => {
         <form>
           <div className='filter-sort__radio'>
             <label>
-              <input type='radio' /> - по возрастанию цены
+              <input
+                type='radio'
+                name='sort'
+                value={sortingValues.increasePrice.value}
+                onChange={(e) => handleSortFlights(e.target.value)}
+              />{" "}
+              - {sortingValues.increasePrice.name}
             </label>
           </div>
           <div className='filter-sort__radio'>
             <label>
-              <input type='radio' /> - по убыванию цены
+              <input
+                type='radio'
+                name='sort'
+                value={sortingValues.decreasePrice.value}
+                onChange={(e) => handleSortFlights(e.target.value)}
+              />{" "}
+              - {sortingValues.decreasePrice.name}
             </label>
           </div>
           <div className='filter-sort__radio'>
             <label>
-              <input type='radio' /> - по времение в пути
+              <input
+                type='radio'
+                name='sort'
+                value={sortingValues.travelTime.value}
+                onChange={(e) => handleSortFlights(e.target.value)}
+              />{" "}
+              - {sortingValues.travelTime.name}
             </label>
           </div>
         </form>
@@ -41,12 +129,24 @@ const Filters = () => {
         <form>
           <div className='filter-transfer__checkbox'>
             <label>
-              <input type='checkbox' /> - 1 пересадка
+              <input
+                type='checkbox'
+                value={filterTransferValues.oneConnection.value}
+                checked={transferFiltersList[0]}
+                onChange={() => handleTransferFilter(0)}
+              />{" "}
+              - {filterTransferValues.oneConnection.name}
             </label>
           </div>
           <div className='filter-transfer__checkbox'>
             <label>
-              <input type='checkbox' /> - без пересадок
+              <input
+                type='checkbox'
+                value={filterTransferValues.direct.value}
+                checked={transferFiltersList[1]}
+                onChange={() => handleTransferFilter(1)}
+              />{" "}
+              - {filterTransferValues.direct.name}
             </label>
           </div>
         </form>

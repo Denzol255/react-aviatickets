@@ -1,7 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import flightReducer from "./reducers/FlightSlice";
+import filterReducer from "./reducers/FilterSlice";
 
-const rootReducer = combineReducers({ flightReducer });
+const rootReducer = combineReducers({ flightReducer, filterReducer });
 
 export const setupStore = () => {
   return configureStore({

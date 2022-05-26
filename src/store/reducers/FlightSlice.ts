@@ -28,7 +28,14 @@ export const initialState: FlightState = {
 export const flightSlice = createSlice({
   name: "flight",
   initialState,
-  reducers: {},
+  reducers: {
+    sortFlights: (state, action: PayloadAction<IFlight[]>) => {
+      state.flights = action.payload;
+    },
+    filterFlightsByTransfer: (state, action: PayloadAction<IFlight[]>) => {
+      state.flights = action.payload;
+    },
+  },
   extraReducers: {
     [fetchFlights.fulfilled.type]: (
       state,
@@ -47,5 +54,7 @@ export const flightSlice = createSlice({
     },
   },
 });
+
+export const { sortFlights, filterFlightsByTransfer } = flightSlice.actions;
 
 export default flightSlice.reducer;
