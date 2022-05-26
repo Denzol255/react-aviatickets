@@ -1,0 +1,63 @@
+.flight-item {
+  &:not(:last-child) {
+    margin: 0 0 20px;
+  }
+  // .flight-item__head
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    background-color: #0087c9;
+    padding: 10px 15px;
+    color: #fff;
+  }
+
+  // .flight-item__company
+
+  &__company {
+  }
+
+  // .flight-item__info
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  // .flight-item__price
+
+  &__price {
+    font-size: 22px;
+  }
+
+  // .flight-item__adult
+
+  &__adult {
+    font-size: 14px;
+  }
+
+  // .flight-item__legs
+
+  &__legs {
+  }
+
+  // .flight-item__choose
+
+  &__choose {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    width: 100%;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #ffb168;
+    padding: 0 10px;
+  }
+}

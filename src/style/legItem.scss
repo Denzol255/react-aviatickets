@@ -1,0 +1,128 @@
+.leg-item {
+  // .leg-item__route
+
+  &__route {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  // .leg-item__waypoint
+
+  &__waypoint {
+  }
+
+  // .leg-item__arrow
+
+  &__arrow {
+    color: #0084c5;
+  }
+
+  // .leg-item__gray-line
+
+  &__gray-line {
+    display: block;
+    width: 98%;
+    height: 2px;
+    background-color: #e5e5e5;
+    margin: 0 auto;
+  }
+
+  // .leg-item__dates
+
+  &__dates {
+  }
+
+  // .leg-item__transfer
+
+  &__transfer {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    padding: 0 20px;
+  }
+
+  // .leg-item__transfer-line
+
+  &__transfer-line {
+    display: block;
+    flex: 1 1 auto;
+    height: 1px;
+    background-color: #a2a2a2;
+  }
+
+  // .leg-item__transfer-number
+
+  &__transfer-number {
+    display: flex;
+    justify-content: center;
+    flex: 0 1 120px;
+    padding: 10px;
+    color: #ff8e1d;
+  }
+
+  // .leg-item__company
+
+  &__company {
+    padding: 10px;
+  }
+
+  // .leg-item__blue-line
+
+  &__blue-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #0084c5;
+  }
+}
+.waypoint {
+  // .waypoint__place
+
+  &__place {
+  }
+
+  // .waypoint__code
+
+  &__code {
+    color: #1987c9;
+  }
+}
+.dates {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px 10px 0;
+  // .dates__wrapper
+
+  &__wrapper {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  // .dates__time
+
+  &__time {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    padding: 0 10px;
+  }
+
+  // .dates__date
+
+  &__date {
+    color: #0084c5;
+  }
+
+  // .dates__duration
+
+  &__duration {
+    display: flex;
+  }
+
+  // .dates__duration-time
+
+  &__duration-time {
+    margin-left: 10px;
+  }
+}

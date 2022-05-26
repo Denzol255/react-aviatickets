@@ -1,0 +1,82 @@
+.filters {
+  // .filters__filter
+
+  &__filter {
+    margin: 0 0 20px;
+  }
+}
+.filter {
+  // .filter__header
+
+  &__header {
+    margin: 0 0 10px;
+  }
+}
+.filter-header {
+  font-size: 16px;
+}
+.filter-sort {
+  // .filter-sort__header
+
+  &__header {
+  }
+
+  // .filter-sort__radio
+
+  &__radio {
+    margin-bottom: 5px;
+    label {
+      display: flex;
+      align-items: center;
+      input {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+.filter-transfer {
+  // .filter-transfer__header
+
+  &__header {
+  }
+
+  // .filter-transfer__checkbox
+
+  &__checkbox {
+    margin-bottom: 5px;
+    label {
+      display: flex;
+      align-items: center;
+      input {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+.filter-price {
+  // .filter-price__header
+
+  &__header {
+  }
+
+  // .filter-price__input
+
+  &__input {
+    margin-bottom: 5px;
+    label {
+      display: flex;
+      max-width: 200px;
+      justify-content: space-between;
+      align-items: center;
+      input {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+.filter-companies {
+  // .filter-companies__header
+
+  &__header {
+  }
+}
