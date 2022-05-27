@@ -4,14 +4,24 @@ interface FilterState {
   sorting: {
     type: string;
   };
-  transferFiltersList: Array<boolean>;
+  transferFilterOptions: Array<boolean>;
+  priceFilter: {
+    from: number;
+    to: number;
+  };
+  companyFilter: Array<string>;
 }
 
 export const initialState: FilterState = {
   sorting: {
     type: "",
   },
-  transferFiltersList: [false, false],
+  transferFilterOptions: [false, false],
+  priceFilter: {
+    from: 0,
+    to: 1000000,
+  },
+  companyFilter: [],
 };
 
 export const filterSlice = createSlice({
@@ -21,16 +31,30 @@ export const filterSlice = createSlice({
     changeSortingType: (state, action: PayloadAction<string>) => {
       state.sorting.type = action.payload;
     },
-    changeTransferFiltersList: (
+    changeTransferFilterOptions: (
       state,
       action: PayloadAction<Array<boolean>>
     ) => {
-      state.transferFiltersList = action.payload;
+      state.transferFilterOptions = action.payload;
+    },
+    changePriceFrom: (state, action: PayloadAction<number>) => {
+      state.priceFilter.from = action.payload;
+    },
+    changePriceTo: (state, action: PayloadAction<number>) => {
+      state.priceFilter.to = action.payload;
+    },
+    changeCompanyFilter: (state, action: PayloadAction<Array<string>>) => {
+      state.companyFilter = action.payload;
     },
   },
 });
 
-export const { changeSortingType, changeTransferFiltersList } =
-  filterSlice.actions;
+export const {
+  changeSortingType,
+  changeTransferFilterOptions,
+  changePriceFrom,
+  changePriceTo,
+  changeCompanyFilter,
+} = filterSlice.actions;
 
 export default filterSlice.reducer;

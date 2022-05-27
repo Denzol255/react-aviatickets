@@ -9,6 +9,7 @@ interface FlightState {
   bestPrices: IBestPrices;
   isLoading: boolean;
   error: string;
+  flightsLimit: number;
 }
 
 export const initialState: FlightState = {
@@ -23,17 +24,18 @@ export const initialState: FlightState = {
   },
   isLoading: false,
   error: "",
+  flightsLimit: 5,
 };
 
 export const flightSlice = createSlice({
   name: "flight",
   initialState,
   reducers: {
-    sortFlights: (state, action: PayloadAction<IFlight[]>) => {
+    setNewFlights: (state, action: PayloadAction<IFlight[]>) => {
       state.flights = action.payload;
     },
-    filterFlightsByTransfer: (state, action: PayloadAction<IFlight[]>) => {
-      state.flights = action.payload;
+    changeFlightsLimit: (state, action: PayloadAction<number>) => {
+      state.flightsLimit += action.payload;
     },
   },
   extraReducers: {
@@ -55,6 +57,6 @@ export const flightSlice = createSlice({
   },
 });
 
-export const { sortFlights, filterFlightsByTransfer } = flightSlice.actions;
+export const { setNewFlights, changeFlightsLimit } = flightSlice.actions;
 
 export default flightSlice.reducer;

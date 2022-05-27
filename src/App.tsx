@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import "./style/App.scss";
+import Filters from "./components/filters/Filters";
 import { FlightList } from "./components/FlightList";
 import { useAppDispatch } from "./hooks/redux";
 import { fetchFlights } from "./store/reducers/ActionCreators";
-import Filters from "./components/Filters";
+import "./style/App.scss";
 
 function App() {
   const dispatch = useAppDispatch();

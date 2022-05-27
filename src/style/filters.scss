@@ -65,10 +65,11 @@
     margin-bottom: 5px;
     label {
       display: flex;
-      max-width: 200px;
+      max-width: 220px;
       justify-content: space-between;
       align-items: center;
       input {
+        padding: 0 10px 0 5px;
         margin-left: 5px;
       }
     }

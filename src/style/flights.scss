@@ -1,0 +1,30 @@
+.flights {
+  flex: 1 1 auto;
+  padding: 0 0 0 30px;
+}
+.flights__empty {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  padding: 30px 0 0;
+}
+
+.flights__show-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  max-width: 300px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  color: #fff;
+  background-color: #0087c9;
+  padding: 0 10px;
+  margin: 0 auto;
+  &.nothing-more {
+    display: none;
+  }
+}
