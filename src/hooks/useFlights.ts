@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { IFlight } from "../models/IFlight";
 
+// Получение отсортированного и отфильтрованного по цене и компаниям списка перелетов
 export const useSortedAndFilteredByPriceAndCompanyFlights = (
   flights: IFlight[],
   sorting: string,
@@ -50,6 +51,7 @@ export const useSortedAndFilteredByPriceAndCompanyFlights = (
   return sortedAndFilteredFlightsByPriceAndCompany;
 };
 
+// Получение конечного списка перелетов, отфильтрованного по количеству пересадок для дальнейшего вывода на страницу
 export const useFlights = (
   flights: IFlight[],
   sorting: string,

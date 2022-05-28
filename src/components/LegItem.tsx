@@ -34,7 +34,8 @@ const LegItem: FC<LegItemProps> = ({ leg, index }) => {
         </div>
         <div className='leg-item__waypoint'>
           <span className='waypoint__place'>
-            {fullInfo.arrivalAirport.caption}{" "}
+            {fullInfo.arrivalCity?.caption}
+            {fullInfo.arrivalCity && ","} {fullInfo.arrivalAirport.caption}{" "}
           </span>
           <span className='waypoint__code'>
             ({fullInfo.arrivalAirport.uid})

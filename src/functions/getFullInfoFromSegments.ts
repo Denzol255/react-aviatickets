@@ -1,6 +1,7 @@
 import { ILeg } from "../models/ILeg";
 import { ISegment } from "../models/ISegment";
 
+// Функция получения только необходимой информации о маршруте в 1 сторону
 export function getFullInfo(leg: ILeg): ISegment {
   if (leg.segments.length === 1) {
     return { ...leg.segments[0], transfer: 0 };

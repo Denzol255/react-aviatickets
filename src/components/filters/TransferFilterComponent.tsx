@@ -17,6 +17,7 @@ const TransferFilterComponent = () => {
     },
   ];
 
+  // Изменение state для фильтра по трансферам
   const handleTransferFilter = (position: number): void => {
     const newTransferFilterOptions = transferFilterOptions.map(
       (filter, index) => (index === position ? !filter : filter)

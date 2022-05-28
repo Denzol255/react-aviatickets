@@ -20,15 +20,22 @@ button {
 .app {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 20px 10px;
 }
 
 .main {
-  display: flex;
+  @media (min-width: "992px") {
+    display: flex;
+  }
 }
 
+// Стили для лоадера
 @import "./loader.scss";
+// Стили для списка перелетов
 @import "./flights.scss";
+// Стили для одного перелета
 @import "./flightItem.scss";
+// Стили для одного лега
 @import "./legItem.scss";
+// Стили для фильтров
 @import "./filters.scss";

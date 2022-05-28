@@ -1,6 +1,8 @@
 .flights {
-  flex: 1 1 auto;
-  padding: 0 0 0 30px;
+  @media (min-width: "992px") {
+    flex: 1 1 auto;
+    padding: 0 0 0 30px;
+  }
 }
 .flights__empty {
   font-size: 22px;

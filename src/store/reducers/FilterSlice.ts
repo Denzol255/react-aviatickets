@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+// State и reducers для фильтров
 interface FilterState {
   sorting: {
     type: string;

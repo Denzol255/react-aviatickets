@@ -5,20 +5,22 @@ import { changeCompanyFilter } from "../../store/reducers/FilterSlice";
 import { ChangeEvent } from "react";
 
 const CompanyFilterComponent = () => {
+  // State для фильтров
   const { companyFilter } = useAppSelector((state) => state.filterReducer);
+  // State для перелетов
   const { bestPrices } = useAppSelector((state) => state.flightReducer);
   const dispatch = useAppDispatch();
+  // Получение списка уникальных компаний
   const uniqueCompanies = getUniqueCompanies(bestPrices);
 
+  // Изменение state для фильтра по компаниям
   const handleCompanyFilter = (event: ChangeEvent<HTMLInputElement>): void => {
     const isChecked = event.target.checked;
     if (isChecked) {
       dispatch(changeCompanyFilter([...companyFilter, event.target.value]));
     } else {
       const index = companyFilter.indexOf(event.target.value);
-      const newCompanyFilter = companyFilter.filter(
-        (company, idx) => idx !== index
-      );
+      const newCompanyFilter = companyFilter.filter((_, idx) => idx !== index);
       dispatch(changeCompanyFilter(newCompanyFilter));
     }
   };

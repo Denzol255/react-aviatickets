@@ -4,6 +4,7 @@ import { IBestPrices } from "../../models/IBestPrices";
 import { fetchFlights } from "./ActionCreators";
 import { IFlightResult } from "../../models/IFlightResult";
 
+// State и reducers для перелетов
 interface FlightState {
   flights: IFlight[];
   bestPrices: IBestPrices;
@@ -58,5 +59,4 @@ export const flightSlice = createSlice({
 });
 
 export const { setNewFlights, changeFlightsLimit } = flightSlice.actions;
-
 export default flightSlice.reducer;

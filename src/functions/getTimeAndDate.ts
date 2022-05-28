@@ -26,6 +26,7 @@ const months = {
   Dec: "дек.",
 };
 
+// Функция получения даты и времени
 export const getTimeAndDate = (fullInfo: ISegment): Array<string> => {
   const dayOfWeekArrival = format(new Date(fullInfo.arrivalDate), "EEE");
   const monthArrival = format(new Date(fullInfo.arrivalDate), "LLL");

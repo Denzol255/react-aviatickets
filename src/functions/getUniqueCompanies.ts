@@ -1,6 +1,7 @@
 import { IBestFlight } from "../models/IBestFlight";
 import { IBestPrices } from "../models/IBestPrices";
 
+// Функция получения уникальных компаний из bestPrices
 export const getUniqueCompanies = (bestPrices: IBestPrices): IBestFlight[] => {
   // Сортируем по убыванию цены все компании
   const allCompanies = [

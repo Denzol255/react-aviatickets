@@ -18,10 +18,10 @@ const FlightItem: FC<FlightItemProps> = ({ flight }) => {
       <div className='flight-item__head'>
         <h2 className='flight-item__company'>{carrier}</h2>
         <div className='flight-item__info'>
-          <div className='flight-item__price'>{formatCurrency(price)}</div>
-          <div className='flight-item__adult'>
+          <span className='flight-item__price'>{formatCurrency(price)}</span>
+          <p className='flight-item__adult'>
             Стоимость для одного взрослого пассажира
-          </div>
+          </p>
         </div>
       </div>
       <ul className='flight-item__legs'>
